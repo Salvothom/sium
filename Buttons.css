@@ -1,0 +1,250 @@
+/* Stile per il bottone hamburger */
+.button {
+    background-color: #415a6b;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap:5px; /* Distanza tra le barre */
+}
+
+
+
+
+/* Le barre del bottone hamburger */
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+/* Il menu laterale (inizialmente nascosto) */
+.side-menu {
+    height: 100%;  /* Copre tutta l'altezza della pagina */
+    width: 0;  /* Menu nascosto inizialmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #415a6b
+    ;
+    overflow-x: hidden;  /* Disabilita lo scorrimento orizzontale */
+    transition: 0.3s;  /* Aggiungi una transizione fluida */
+    padding-top: 60px;
+}
+
+/* Voci del menu */
+.side-menu a {
+    font-family: Font2;
+    margin-top: 20px;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    display: block;
+    transition: 0.3s;
+    text-align: left;
+
+}
+
+.side-menu a:hover {
+    background-color: #ADA991;
+    color: #000000;
+}
+
+/* Quando il menu è aperto (con la classe "open") */
+.side-menu.open {
+    width: 250px;  /* Larghezza del menu quando è aperto */
+}
+
+/* Stile per il contenitore del titolo */
+.ContenitoreTitolo {
+    text-align: center;
+    padding: 0px;
+}
+
+/* Bottone carrello */
+.button2 {
+    background-color: #415a6b;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Distanza tra le barre */
+    margin-right: 40px;
+}
+
+/* Il menu laterale (inizialmente nascosto) */
+.side-menu2 {
+    height: 100%;  /* Copre tutta l'altezza della pagina */
+    width: 0;  /* Menu nascosto inizialmente */
+    position: fixed;
+    top: 0;
+    right: 0;  /* Il menu sarà a destra */
+    background-color: #415a6b;
+    overflow-y: auto;  /* Permette lo scorrimento verticale */
+    transition: 0.3s ease;  /* Aggiungi una transizione fluida */
+    padding-top: 60px;
+    padding-bottom: 70px;  /* Dà spazio in fondo alla sidebar per il pulsante */
+}
+
+
+/* Quando il menu laterale è aperto (con la classe "open") */
+.side-menu2.open {
+    width: 300px;  /* Larghezza del menu quando è aperto */
+}
+
+/* Stile per il titolo "Carrello" */
+.cart-sidebar h5 {
+    font-family: Font1 ;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    
+}
+
+/* Lista degli articoli nel carrello */
+#cartItems {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px;
+    text-align: left;
+}
+
+/* Ogni articolo nel carrello */
+#cartItems li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+/* Design del prodotto nel carrello */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Aggiungi un po' di spazio tra gli articoli */
+.cart-item div {
+    flex-grow: 1;
+}
+
+/* Pulsante checkout */
+/* Pulsante checkout */
+#checkoutBtn {
+    background-color: #BFBBA9;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    text-align: center;
+    border: none;
+    width: 100%;  /* Rende il pulsante largo quanto la sidebar */
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    left: 0;
+    z-index: 10;  /* Porta il pulsante sopra gli altri contenuti */
+}
+
+#checkoutBtn:hover {
+    background-color: #45a049;
+}
+
+
+/* Ombra del carrello per evidenziarlo meglio */
+.cart-sidebar {
+    display: none;  /* Nasconde la sidebar di default */
+    background-color: #fff;
+    padding: 20px;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;  /* Posiziona la sidebar a destra */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;  /* Permette lo scorrimento verticale */
+    transition: 0.3s ease;  /* Aggiungi una transizione fluida */
+}
+
+/* Quando la classe "open" è applicata, il carrello diventa visibile */
+.cart-sidebar.open {
+    display: block;  /* Rendi il carrello visibile quando la classe "open" è presente */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3); /* Aggiungi un'ombra per evidenziarlo */
+}
+
+h5{
+    font-family: Font2;
+    font-size: 20px;
+   
+}
+
+
+/* Allineamento dei prodotti nel carrello */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Cambiato per allineare gli elementi in alto */
+    font-size: 16px;
+    margin-bottom: 10px;
+    flex-direction: column; /* Aggiunto per impilare il contenuto in verticale */
+}
+
+/* Aggiungi spazio tra le informazioni del prodotto e i pulsanti */
+.cart-item div {
+    margin-bottom: 10px;
+}
+
+/* Allineamento e stile per i pulsanti + e - sotto il prodotto */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Spazio tra i pulsanti e la quantità */
+    margin-top: 10px; /* Spazio sopra i pulsanti */
+}
+
+/* Stile per i pulsanti + e - */
+.quantity-btn {
+    background-color: #BFBBA9;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.quantity-btn:hover {
+    background-color: #45a049;
+}
+
+/* Stile per il prezzo totale di ogni prodotto */
+.cart-item div strong {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Stile per il totale complessivo del carrello */
+#cartItems > div {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+

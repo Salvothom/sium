@@ -1,0 +1,158 @@
+<html>
+    <head> 
+        <title>CLOTHOMAS - Catalogo Bambini</title>
+        <link rel="stylesheet" href="stile.css">
+        <link rel="stylesheet" href="Buttons.css">
+    </head>
+    <body>
+        <header>
+            <div class="bottones">
+                <button class="button" type="button" onclick="ToggleMenu()">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                
+                <div id="sideMenu" class="side-menu">
+                    <a href="Home2.html">HOME</a>
+                    <a href="Prodotti.html">I NOSTRI PRODOTTI</a>
+                    <a href="Chi siamo.html">CHI SIAMO</a>
+                    <a href="contatti.html">CONTATTI</a>
+                </div>
+        
+                <script src="script.java"></script>
+            </div>
+        
+            <div class="ContenitoreTitolo">
+                <h1><a href="Home2.html">CLOTHOMAS</a></h1>
+                <p>Moda per bambini - Comodità e Stile</p>
+            </div>
+        
+            <div class="dio">
+                <button class="button2" onclick="ToggleMenu2()">
+                    <div class="bag-icon">
+                        <svg
+                            width="35"   
+                            height="35"  
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M5 4H19C19.5523 4 20 4.44771 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5C4 4.44772 4.44771 4 5 4ZM2 5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5ZM12 12C9.23858 12 7 9.31371 7 6H9C9 8.56606 10.6691 10 12 10C13.3309 10 15 8.56606 15 6H17C17 9.31371 14.7614 12 12 12Z"
+                                fill="currentColor"
+                                stroke="black"  
+                                stroke-width="0.7"  
+                            />
+                        </svg>
+                        <!-- Contatore degli articoli nel carrello -->
+                        <span id="cart-counter" class="cart-counter">0</span>
+                    </div>
+                </button>
+            </div>
+            
+            </svg>
+           
+                
+                <div id="sideMenu2" class="side-menu2">
+                    
+            
+                    <h5>CARRELLO</h5>
+                
+          <ul id="cartItems">
+            <!-- Gli articoli aggiunti appariranno qui -->
+          </ul>
+          <button id="checkoutBtn">CHECKOUT</button>
+    
+    <script>
+    document.getElementById("checkoutBtn").addEventListener("click", function () {
+        window.location.href = "checkout.html";
+    });
+    </script>
+        </div>
+                    
+                </div>
+        </header>
+        
+        
+        <div class="bckimg">    
+            <img src="Immagini/IMGHOME1b.png" alt="">
+        </div>
+
+        <div class="contenuto">
+            <section class="category">
+            <h2>PIGIAMI PER BAMBINE</h2>
+            <div class="product">
+                <img src="Immagini/PjG2.png">
+                <h3><a href="Prodd.html?id=1">PIGIAMA ROSA</a></h3> 
+                <p>Pigiami per il confort delle vostre bambine</p>
+            </div>
+            <div class="product">
+                <img src="Immagini/PjG1.png">
+                <h3> <a href="Prodd.html?id=2"> PIGIAMA ARANCIONE</a></h3>
+                <p>Pigiami per il confort delle vostre bambine</p>
+            </div>
+        </section>
+        <section class="category">
+            <h2>PIGIAMI PER BAMBINI</h2>
+            <div class="product">
+                <img src="Immagini/PjB1.png">
+                <h3><a href="Prodd.html?id=4">PIGIAMA SPIDER-MAN</a></h3>
+                <p>Pigiami per il confort dei vostri bambini.</p>
+            </div>
+            <div class="product">
+                <img src="Immagini/PjB2.png">
+                <h3><a href="Prodd.html?id=3">PIGIAMA MINIONS</a></h3>
+                <p>Pigiami per il confort dei vostri bambini.</p>
+    
+            </div>
+            </section>
+            <section class="category">
+                <h2>VESTITI PER BAMBINE</h2>
+                <div class="product">
+                    <img src="Immagini/PaG2.png">
+                    <h3><a href="Prodd.html?id=5">JEANS BAMBINA</a></h3>
+                    <p>Jeans di ottimo materiale per essere sempre alla moda.</p>
+                </div>
+                <div class="product">
+                    <img src="Immagini/TG2.png">
+                    <h3><a href="Prodd.html?id=6">T-SHIRT BAMBINA</a></h3>
+                    <p>Maglietta calda perfetta per ogni stagione.</p>
+        
+                </div>
+    
+        </section>
+
+    </section>
+    <section class="category">
+        <h2>VESTITI PER BAMBINI</h2>
+        <div class="product">
+            <img src="Immagini/PaB2.png">
+            <h3><a href="Prodd.html?id=7">JEANS BAMBINO</a></h3>
+            <p>Jeans di ottimo materiale per essere sempre alla moda.</p>
+        </div>
+        <div class="product">
+            <img src="Immagini/TB2.png">
+            <h3><a href="Prodd.html?id=8">POLO BAMBINO</a></h3>
+            <p>Polo elegante per bambini.</p>
+
+        </div>
+
+</section>
+
+<footer>
+    <div class="Contattaci">
+        <p>Contattaci:  <a href="mailto: info@clothomas.com">info@clothomas.com</a> | P.IVA: 02564450223</p>
+        <p>Indirizzo: Via Vittorio Emanuele 3° - 38085 Pieve di Bono-Prezzo TN | Nr. telefono: <a href="tel:+39 338 9346042">+39 338 9346042</a></p>
+    </div>
+</footer>
+
+<script src="script2.java"></script>
+<script src="script.java"></script>
+<script src="cartjv.java"></script>
+<script src="Producttj.java"></script>  
+    </body>
+    
+    </html>

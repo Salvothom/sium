@@ -1,0 +1,67 @@
+/* Stile per il bottone hamburger */
+.button {
+    background-color: #415a6b;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap:5px; /* Distanza tra le barre */
+}
+
+
+
+
+/* Le barre del bottone hamburger */
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+/* Il menu laterale (inizialmente nascosto) */
+.side-menu {
+    height: 100%;  /* Copre tutta l'altezza della pagina */
+    width: 0;  /* Menu nascosto inizialmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #415a6b
+    ;
+    overflow-x: hidden;  /* Disabilita lo scorrimento orizzontale */
+    transition: 0.3s;  /* Aggiungi una transizione fluida */
+    padding-top: 60px;
+}
+
+/* Voci del menu */
+.side-menu a {
+    font-family: Font2;
+    margin-top: 20px;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    display: block;
+    transition: 0.3s;
+    text-align: left;
+
+}
+
+.side-menu a:hover {
+    background-color: #ADA991;
+    color: #000000;
+}
+
+/* Quando il menu è aperto (con la classe "open") */
+.side-menu.open {
+    width: 250px;  /* Larghezza del menu quando è aperto */
+}
+
+/* Stile per il contenitore del titolo */
+.ContenitoreTitolo {
+    text-align: center;
+    padding: 0px;
+}
+
+/* Bottone carrello */

@@ -1,0 +1,96 @@
+/* Stile di base per il carrello */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Icona carrello (a destra) */
+.carrello-btn {
+    position: fixed;
+    top: 58px;
+    right: 20px;  /* Posiziona l'icona del carrello a destra */
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10; /* Assicurati che l'icona del carrello sia sopra gli altri elementi */
+}
+
+/* Pannello laterale del carrello (a destra) */
+.carrello {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 50%;  /* Centra il carrello verticalmente */
+    right: 0;  /* Posiziona il carrello a destra */
+    transform: translateY(-50%); /* Centra verticalmente rispetto al suo punto di partenza */
+    background-color: #333;
+    color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 9999;
+}
+
+/* Contenuto del carrello */
+.carrello-contenuto {
+    margin-right: 20px;
+}
+
+.carrello ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.carrello ul li {
+    margin: 10px 0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Stile per quando il carrello è aperto */
+.carrello.open {
+    width: 300px;  /* Larghezza del carrello quando è aperto */
+}
+
+/* Stile per il menu laterale */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;  /* Il menu laterale è nascosto a sinistra inizialmente */
+    height: 100%;
+    width: 250px;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 999;
+}
+
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+
+/* Aggiungi una classe per far apparire il menu laterale */
+.side-menu.open {
+    left: 0;
+}

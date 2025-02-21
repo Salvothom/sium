@@ -1,0 +1,372 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #9ae5e6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #415a6b;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    display: flex; /* Usa flexbox per la disposizione degli elementi */
+    justify-content: flex-start; /* Allinea il bottone a sinistra */
+    align-items: center; 
+    overflow: hidden;
+    z-index: 10;
+}
+.ContenitoreTitolo { display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; 
+
+}
+
+.ContenitoreTitolo h1{ 
+    font-size: 40px;
+    letter-spacing: 5px;
+    font-family: Font3;}
+
+.ContenitoreTitolo p {margin-top: -20px;}
+.contenuto{
+    
+    margin-top: 180px;
+}
+
+
+.category {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #000000;
+}
+
+.product {
+    display: inline-block;
+    width: 45%;
+    margin: 10px;
+    text-align: center;
+}
+
+h3:hover{
+color: blue;
+text-decoration: underline;}
+	
+
+.product img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #415a6b;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.fc {
+    background-color: #415a6b;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.ptr {
+    background-color: #415a6b;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+
+.Homepage {
+    margin-top: 180px;
+    text-decoration: none;
+    color: #415a6b;
+    margin-top:280px;
+
+
+
+}
+
+a {text-decoration: none;
+    color: inherit;}
+
+
+
+@font-face {
+    font-family: 'Font1';
+    src: url('font/FontsFree-Net-Dream-Avenue.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+    font-family: 'Font2';
+    src: url('font/AvenirLTStd-Black.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+
+}
+
+@font-face {
+font-family: 'Font3';
+src: url('font/league-spartan.bold.ttf') format('woff2');
+font-weight: normal;
+font-style: normal;
+}
+
+
+.Madonna {
+    padding: 50px;
+background-color: #9ae5e6;
+margin-top:180px; 
+;}
+
+.Madonna h1{
+    color:#002244;
+    text-align: left;
+    margin-left: 20px;
+    font-size: 60px;
+    font-family: Font2;
+}
+
+.Madonna h2 {
+    text-align: left;
+    margin-left: 20px;
+    font-size: 60px;
+    margin-top: 180px;
+    font-family: Font2;
+    color: #002244;
+}
+
+
+.Madonna p {text-align: left; 
+margin-left:  20px;
+font-family: Font2;
+font-size: 25px;
+color: #444444;
+}
+
+.madonna ul{
+    display: flex;
+    gap: 10,;
+    text-align: left; 
+    margin-left:  20px;
+    font-family: Font2;
+    font-size: 21px;  
+    gap: 100 ;
+    
+}
+.textimg1{
+    font-family: "Font2";
+    font-size: 100px;
+}
+
+
+
+.product-pagepd{
+    
+    margin-left: 30px;
+    
+}
+
+.product-imagepd{
+    margin-top: 180px;
+    margin-left: 30PX;
+    display: flex;
+    align-items: flex-start;
+    width: 25%;
+}
+
+.product-pagepd h1{ 
+    display: flex;
+    align-items: start;
+}
+
+.product-descriptionpd{
+    font-family: "Font2";
+    display: flex;
+    align-items: start;
+    text-align: left;
+}
+
+.product-price{
+    font-family: "Font2";
+    display: flex;
+    align-items: start;
+    text-align: left;
+    font-size: 25px;
+}
+
+.product-code {
+    font-family: "Font2";
+    display: flex;
+    align-items: start;
+    text-align: left;
+    font-size: 13PX;
+
+
+}
+
+.size-selectionpd p{
+    display: flex;
+    align-items: flex-start;
+    font-family: "Font2";
+}
+
+.size-buttons {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.size-btn {
+    width: 60px;
+    height: 30px;
+    border: 2px solid black;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     font-size: 16px; 
+     font-family: "Font2";
+     cursor: pointer;
+
+}
+
+.add-to-cart, .buy-now {
+    font-family: "Font2";
+    margin-top: 40px;
+    width: 100px;
+    height: px;
+    border: 2px solid black;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     font-size: 16px; 
+     cursor: pointer;
+
+}
+
+.Testo_P {
+    margin-top: 20px;
+    font-family: "Font2";
+    display: flex;
+    align-items: start;
+    text-align: left;
+    font-size: 25px;
+    margin-left: 30px;
+}
+
+
+/* Posiziona il contatore sopra l'icona */
+.dio .bag-icon {
+    color: white;
+    position: relative; /* Necessario per posizionare il contatore */
+}
+
+/* Stile per il contatore */
+.cart-counter {
+    position: absolute;
+    top: -5px; /* Posiziona il contatore un po' più in alto rispetto all'icona */
+    right: -5px; /* Posiziona il contatore un po' a destra rispetto all'icona */
+    background-color: red; /* Colore di sfondo del contatore */
+    color: white; /* Colore del testo */
+    font-size: 12px; /* Dimensione del testo */
+    width: 18px; /* Larghezza del contatore */
+    height: 18px; /* Altezza del contatore */
+    border-radius: 50%; /* Rende il contatore rotondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* Nascondi il contatore se è uguale a 0 */
+#cart-counter {
+    display: none; /* Inizialmente nascosto */
+}
+
+/* Mostra il contatore se è maggiore di 0 */
+#cart-counter.visible {
+    display: block;
+}
+
+.Contatti {
+padding: 50px;
+background-color: #9ae5e6;
+color: rgb(255, 255, 255);}
+
+
+.Contatti p {
+    margin-top: 180px; 
+    text-align: left; 
+    margin-left:  20px;
+    font-family: Font2;
+    font-size: 25px;
+    line-height: 37px;
+    color: #444444;
+}
+
+.Contatti a {
+    color: blue; /* Colore iniziale del link */
+    text-decoration: none; /* Rimuove la sottolineatura di default */
+}
+
+/* Effetto quando si passa sopra il link */
+.Contatti a:hover {
+    color: blue; /* Colore blu quando il mouse passa sopra */
+    text-decoration: underline; /* Sottolinea il link */
+}
+
+.Contattaci a {
+    color: black; /* Colore iniziale del link */
+    text-decoration: underline; /* Rimuove la sottolineatura di default */
+}
+
+/* Effetto quando si passa sopra il link */
+.Contattaci a:hover {
+    color: blue; /* Colore blu quando il mouse passa sopra */
+    text-decoration: underline; /* Sottolinea il link */
+}
+
+.Pizza {
+    width: 100%;
+    margin-top: -210PX;
+    margin-left: -60px;
+
+}
+
+.bckimg{
+    margin-top: -2px;
+    background-image: url("Immagini/IMGHOME1b.png"); /* L'immagine di sfondo */
+    background-color: #cccccc; /* Colore di sfondo nel caso in cui l'immagine non sia disponibile */
+    height: 10px; /* Altezza fissa */
+    background-position: left; /* Centra l'immagine nel contenitore */
+    background-repeat: no-repeat; /* Non ripetere l'immagine */
+    background-size: cover; /* Fai in modo che l'immagine copra tutto il contenitore, ritagliando se necessario */
+    width: 80%;
+}

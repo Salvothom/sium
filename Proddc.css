@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    margin-left: -40px;
+}
+
+
+.ContenitoreTitolo { display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; 
+
+}
+.product-page{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.product-image {
+    margin-top: 180px;
+    justify-content: left;
+    align-items: flex-start;
+
+    }

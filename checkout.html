@@ -1,0 +1,186 @@
+<html>
+    <head>
+        <title>CLOTHOMAS - Catalogo Bambini</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="stile.css">
+        <link rel="stylesheet" href="checkout.css">
+        <link rel="stylesheet" href="Button2.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="bottones">
+                <button class="button" type="button" onclick="ToggleMenu()">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                
+                <div id="sideMenu" class="side-menu">
+                    <a href="Home2.html">HOME</a>
+                    <a href="Prodotti.html">I NOSTRI PRODOTTI</a>
+                    <a href="Chi siamo.html">CHI SIAMO</a>
+                    <a href="contatti.html">CONTATTI</a>
+                </div>
+        
+                <script src="script.java"></script>
+            </div>
+        
+            <div class="ContenitoreTitolo">
+                <h1><a href="Home2.html">CLOTHOMAS</a></h1>
+                <p>Moda per bambini - Comodità e Stile</p>
+            </div>
+        
+           
+        </header>
+
+
+        <div class="checkoutT">
+            <h1>GRAZIE PER AVER SCELTO CLOTHOMAS</h1>
+            <p>Questo è il riassunto del tuo ordine:</p>
+        </div>
+
+        <ul id="cart-items"></ul>
+
+        <!-- Totale del carrello -->
+        <p id="total-price"></p>
+
+        <!-- Bottone per confermare l'ordine -->
+        <button id="confirm-order-btn">Conferma Ordine</button>
+        
+
+       <!-- Aggiungi jsPDF tramite CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+document.getElementById("confirm-order-btn").addEventListener("click", function () {
+    // Recupera i dati dal localStorage usando la chiave "cart"
+    let prodotti = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (prodotti.length === 0) {
+        alert("Nessun prodotto trovato nel carrello!");
+        return;
+    }
+
+    // Inizializza jsPDF
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Percorso relativo dell'immagine del logo
+    let logoPath = 'immagini/LOGO.png';  // Sostituisci con il percorso corretto
+
+    // Aggiungi l'immagine del logo al posto della scritta
+    const logoWidth = 60;  // Larghezza del logo (in mm)
+    const logoHeight = 20; // Altezza del logo (in mm)
+    const logoX = 20;      // Posizione X (a partire dal margine sinistro)
+    const logoY = 20;      // Posizione Y (a partire dall'alto)
+
+    doc.addImage(logoPath, 'PNG', logoX, logoY, logoWidth, logoHeight);
+
+    // Aggiungi il resto del contenuto del PDF (come nel tuo codice originale)
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    doc.text("Dettagli Ordine", 20, 50);  // Il titolo ora è a y = 50
+
+    // Aggiungi la data dell'ordine
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text("Data ordine: " + new Date().toLocaleString(), 20, 60);
+
+    // Aggiungi una riga orizzontale sotto l'intestazione
+    doc.setDrawColor(0);
+    doc.line(20, 62, 190, 62);  // Spostata la linea
+
+    // Aggiungi i dettagli del carrello nel PDF
+    let y = 70; // Posizione iniziale per il testo
+    let totaleDocumento = 0; // Totale complessivo per il documento
+
+    // Cicla attraverso tutti i prodotti
+    prodotti.forEach((prodotto, index) => {
+        // Aggiungi il nome del prodotto e altri dettagli
+        doc.setFontSize(12);
+        doc.text(`Prodotto ${index + 1}:`, 20, y);
+        y += 10;
+
+        doc.text(`Nome: ${prodotto.title || "N/A"}`, 20, y);
+        y += 8;
+
+        doc.text(`Codice: ${prodotto.code || "N/A"}`, 20, y);
+        y += 8;
+
+        doc.text(`Taglia: ${prodotto.size || "N/A"}`, 20, y);
+        y += 8;
+
+        doc.text(`Quantità: ${prodotto.quantity || "N/A"}`, 20, y);
+        y += 8;
+
+        // Aggiungi il prezzo unitario e il totale per prodotto
+        let prezzoUnitario = prodotto.price || 0;
+        let totalePerProdotto = prezzoUnitario * prodotto.quantity;
+        doc.text(`Prezzo unitario: €${prezzoUnitario.toFixed(2)}`, 20, y);
+        y += 8;
+
+        doc.text(`Totale prodotto: €${totalePerProdotto.toFixed(2)}`, 20, y);
+        y += 15; // Aggiungi spazio per il prossimo prodotto
+
+        // Aggiungi l'immagine del prodotto se disponibile
+        if (prodotto.imageUrl) {
+            const imageWidth = 30;  // Larghezza dell'immagine
+            const imageHeight = 30; // Altezza dell'immagine
+            const imageX = 150; // Posizione X per l'immagine (a destra)
+            const imageY = y - 35; // Posizione Y per l'immagine (allineata con il testo)
+
+            // Aggiungi immagine ridotta a destra dei dati
+            doc.addImage(prodotto.imageUrl, 'PNG', imageX, imageY, imageWidth, imageHeight);
+
+            // Aggiorna la posizione y dopo aver aggiunto l'immagine
+            y += 35;  // Spazio aggiuntivo per separare l'immagine dal testo successivo
+        }
+
+        // Aggiungi il totale del prodotto al totale complessivo del documento
+        totaleDocumento += totalePerProdotto;
+
+        // Se l'altezza supera la dimensione della pagina, aggiungi una nuova pagina
+        if (y > 270) {  // Se la posizione y è maggiore della larghezza della pagina (es. 270px)
+            doc.addPage();  // Aggiungi una nuova pagina
+            y = 20;  // Resetta y per la nuova pagina
+        }
+    });
+
+    // Aggiungi una linea finale
+    doc.setDrawColor(0);
+    doc.line(20, y, 190, y);
+
+    // Aggiungi il totale complessivo in fondo al documento
+    y += 10; // Aggiungi un po' di spazio prima del totale finale
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Totale Ordine: €${totaleDocumento.toFixed(2)}`, 20, y);
+
+    // Scarica il PDF
+    doc.save("ordine.pdf");
+});
+</script>
+
+<footer>
+    <div class="Contattaci">
+        <p>Contattaci:  <a href="mailto: info@clothomas.com">info@clothomas.com</a> | P.IVA: 02564450223</p>
+        <p>Indirizzo: Via Vittorio Emanuele 3° - 38085 Pieve di Bono-Prezzo TN | Nr. telefono: <a href="tel:+39 338 9346042">+39 338 9346042</a></p>
+    </div>
+</footer>
+
+
+
+
+
+        </div>
+        </body>
+
+
+        <script src="checkout.js"></script>
+        <script src="script2.java"></script>
+        <script src="script.java"></script>
+        <script src="cartjv.java"></script>
+        <script src="Producttj.java"></script>
+
+</html>

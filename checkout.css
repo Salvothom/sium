@@ -1,0 +1,110 @@
+.checkoutT h1{
+    margin-top: 200px;
+    text-align: left;
+    font-family: Font2;
+    font-size: 50px;
+    color: white;
+    margin-left: 13px;
+}
+
+.checkoutT p{
+    margin-top: 20px;
+    text-align: left;
+    font-family: Font2;
+    font-size: 20;
+    color: white;
+    margin-left: 13px;
+}
+
+
+/* Stili generali */
+body {
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+
+
+/* Stile per la lista del carrello */
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-item {
+    padding: 15px;
+    margin: 10px 0;
+    border: 3px solid #ffffff;
+    border-radius: 5px;
+    display: flex;
+    align-items: column;
+    align-items: flex-start;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.cart-item .product-image {
+    margin-right: 20px;
+    margin-bottom: 10px; /* Spazio tra l'immagine e i dettagli */
+    display: flex;
+    justify-content: center; /* Centra l'immagine */
+}
+
+.cart-item .product-image img {
+    width: 100px; /* Imposta una dimensione fissa per l'immagine */
+    height: auto;
+    border-radius: 5px;
+}
+
+.cart-item .product-details {
+    width: 100%;
+    
+}
+
+.cart-item .product-image img {
+    max-width: 150px; /* Imposta una dimensione massima per l'immagine */
+    height: auto;
+    border-radius: 5px;
+}
+
+.cart-item .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-start;
+}
+
+.cart-item .product-size,
+.cart-item .product-price,
+.cart-item .product-quantity,
+.cart-item .tot-price {
+    font-size: 16px;
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-start;
+    font-weight: bold;
+}
+
+/* Stile per il totale del carrello */
+#total-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Bottone per confermare l'ordine */
+#confirm-order-btn {
+    background-color: #45a049;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-bottom: 60px;
+}
+
+#confirm-order-btn:hover {
+    background-color: #367839;
+}
