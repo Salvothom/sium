@@ -95,8 +95,15 @@ document.getElementById("confirm-order-btn").addEventListener("click", async fun
 
     let y = 70;
     let totaleDocumento = 0;
+    let prodottoCounter = 0;
 
     let immaginiPromises = prodotti.map(async (prodotto, index) => {
+        if (prodottoCounter >= 3) {
+            doc.addPage();
+            y = 20; // Reset y after new page
+            prodottoCounter = 0; // Reset counter after page break
+        }
+
         doc.setFontSize(12);
         doc.text(`Prodotto ${index + 1}:`, 20, y);
         y += 10;
@@ -122,15 +129,18 @@ document.getElementById("confirm-order-btn").addEventListener("click", async fun
         if (prodotto.imageUrl) {
             let base64Image = await getBase64Image(prodotto.imageUrl);
             if (base64Image) {
-                doc.addImage(base64Image, "PNG", 150, y - 35, 30, 30);
+                // Posiziona l'immagine a destra della descrizione
+                doc.addImage(base64Image, "PNG", 150, y - 35, 30, 30); // 150 è la posizione x per l'immagine
             }
-            y += 35;
+            y += 35; // Aggiungi uno spazio extra dopo l'immagine
         }
 
         if (y > 270) {
             doc.addPage();
-            y = 20;
+            y = 20; // Reset y per la nuova pagina
         }
+
+        prodottoCounter++;
     });
 
     await Promise.all(immaginiPromises);
@@ -144,6 +154,7 @@ document.getElementById("confirm-order-btn").addEventListener("click", async fun
     doc.save("ordine.pdf");
 });
 </script>
+
 
 
 <footer>
