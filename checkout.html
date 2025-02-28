@@ -49,7 +49,6 @@
         <button id="confirm-order-btn">Conferma Ordine</button>
         
 
-       <!-- Aggiungi jsPDF tramite CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
@@ -79,7 +78,7 @@ document.getElementById("confirm-order-btn").addEventListener("click", function 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
-    let logoPath = window.location.origin + "/immagini/LOGO.png"; 
+    let logoPath = window.location.origin + "/Immagini/LOGO.png"; 
     
     getBase64Image(logoPath, function (base64Logo) {
         const logoWidth = 60;
