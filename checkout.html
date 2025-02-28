@@ -84,13 +84,6 @@ document.getElementById("confirm-order-btn").addEventListener("click", async fun
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
-    let logoPath = "https://salvothom.github.io/Immagini/LOGO.png";
-    let base64Logo = await getBase64Image(logoPath);
-
-    if (base64Logo) {
-        doc.addImage(base64Logo, "PNG", 20, 20, 60, 20);
-    }
-    
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
     doc.text("Dettagli Ordine", 20, 50);
