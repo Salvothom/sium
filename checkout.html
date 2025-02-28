@@ -52,27 +52,29 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-// Funzione per convertire immagini in Base64
-function getBase64Image(url, callback) {
-    let img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.onload = function () {
-        let canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        let ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        let dataURL = canvas.toDataURL("image/png");
-        callback(dataURL);
-    };
-    img.onerror = function () {
-        console.error("Errore nel caricamento dell'immagine: ", url);
-        callback(null);
-    };
-    img.src = url;
+// Funzione per convertire immagini in Base64 con Promessa
+function getBase64Image(url) {
+    return new Promise((resolve) => {
+        let img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.onload = function () {
+            let canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            let ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            let dataURL = canvas.toDataURL("image/png");
+            resolve(dataURL);
+        };
+        img.onerror = function () {
+            console.error("Errore nel caricamento dell'immagine: ", url);
+            resolve(null);
+        };
+        img.src = url;
+    });
 }
 
-document.getElementById("confirm-order-btn").addEventListener("click", function () {
+document.getElementById("confirm-order-btn").addEventListener("click", async function () {
     let prodotti = JSON.parse(localStorage.getItem("cart")) || [];
     if (prodotti.length === 0) {
         alert("Nessun prodotto trovato nel carrello!");
@@ -83,78 +85,70 @@ document.getElementById("confirm-order-btn").addEventListener("click", function 
     const doc = new jsPDF();
     
     let logoPath = "https://salvothom.github.io/Immagini/LOGO.png";
+    let base64Logo = await getBase64Image(logoPath);
+
+    if (base64Logo) {
+        doc.addImage(base64Logo, "PNG", 20, 20, 60, 20);
+    }
     
-    getBase64Image(logoPath, function (base64Logo) {
-        if (base64Logo) {
-            const logoWidth = 60;
-            const logoHeight = 20;
-            const logoX = 20;
-            const logoY = 20;
-            doc.addImage(base64Logo, "PNG", logoX, logoY, logoWidth, logoHeight);
-        }
-        
-        doc.setFontSize(22);
-        doc.setFont("helvetica", "bold");
-        doc.text("Dettagli Ordine", 20, 50);
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    doc.text("Dettagli Ordine", 20, 50);
 
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text("Data ordine: " + new Date().toLocaleString(), 20, 60);
+    doc.line(20, 62, 190, 62);
+
+    let y = 70;
+    let totaleDocumento = 0;
+
+    let immaginiPromises = prodotti.map(async (prodotto, index) => {
         doc.setFontSize(12);
-        doc.setFont("helvetica", "normal");
-        doc.text("Data ordine: " + new Date().toLocaleString(), 20, 60);
-        doc.line(20, 62, 190, 62);
-
-        let y = 70;
-        let totaleDocumento = 0;
-
-        prodotti.forEach((prodotto, index) => {
-            doc.setFontSize(12);
-            doc.text(`Prodotto ${index + 1}:`, 20, y);
-            y += 10;
-
-            doc.text(`Nome: ${prodotto.title || "N/A"}`, 20, y);
-            y += 8;
-            doc.text(`Codice: ${prodotto.code || "N/A"}`, 20, y);
-            y += 8;
-            doc.text(`Taglia: ${prodotto.size || "N/A"}`, 20, y);
-            y += 8;
-            doc.text(`Quantità: ${prodotto.quantity || "N/A"}`, 20, y);
-            y += 8;
-
-            let prezzoUnitario = prodotto.price || 0;
-            let totalePerProdotto = prezzoUnitario * prodotto.quantity;
-            doc.text(`Prezzo unitario: €${prezzoUnitario.toFixed(2)}`, 20, y);
-            y += 8;
-            doc.text(`Totale prodotto: €${totalePerProdotto.toFixed(2)}`, 20, y);
-            y += 15;
-
-            if (prodotto.imageUrl) {
-                getBase64Image(prodotto.imageUrl, function (base64Image) {
-                    if (base64Image) {
-                        const imageWidth = 30;
-                        const imageHeight = 30;
-                        const imageX = 150;
-                        const imageY = y - 35;
-                        doc.addImage(base64Image, "PNG", imageX, imageY, imageWidth, imageHeight);
-                    }
-                });
-                y += 35;
-            }
-
-            totaleDocumento += totalePerProdotto;
-
-            if (y > 270) {
-                doc.addPage();
-                y = 20;
-            }
-        });
-
-        doc.line(20, y, 190, y);
+        doc.text(`Prodotto ${index + 1}:`, 20, y);
         y += 10;
-        doc.setFontSize(14);
-        doc.setFont("helvetica", "bold");
-        doc.text(`Totale Ordine: €${totaleDocumento.toFixed(2)}`, 20, y);
 
-        doc.save("ordine.pdf");
+        doc.text(`Nome: ${prodotto.title || "N/A"}`, 20, y);
+        y += 8;
+        doc.text(`Codice: ${prodotto.code || "N/A"}`, 20, y);
+        y += 8;
+        doc.text(`Taglia: ${prodotto.size || "N/A"}`, 20, y);
+        y += 8;
+        doc.text(`Quantità: ${prodotto.quantity || "N/A"}`, 20, y);
+        y += 8;
+
+        let prezzoUnitario = prodotto.price || 0;
+        let totalePerProdotto = prezzoUnitario * prodotto.quantity;
+        doc.text(`Prezzo unitario: €${prezzoUnitario.toFixed(2)}`, 20, y);
+        y += 8;
+        doc.text(`Totale prodotto: €${totalePerProdotto.toFixed(2)}`, 20, y);
+        y += 15;
+
+        totaleDocumento += totalePerProdotto;
+
+        if (prodotto.imageUrl) {
+            let base64Image = await getBase64Image(prodotto.imageUrl);
+            if (base64Image) {
+                doc.addImage(base64Image, "PNG", 150, y - 35, 30, 30);
+            }
+            y += 35;
+        }
+
+        if (y > 270) {
+            doc.addPage();
+            y = 20;
+        }
     });
+
+    await Promise.all(immaginiPromises);
+
+    doc.line(20, y, 190, y);
+    y += 10;
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Totale Ordine: €${totaleDocumento.toFixed(2)}`, 20, y);
+
+    doc.save("ordine.pdf");
 });
 </script>
 
